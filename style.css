@@ -1,0 +1,1046 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+html{
+
+    scroll-behavior:smooth;
+}
+
+.logo-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:12px;
+}
+
+.logo-header img{
+
+    width:70px;
+
+    height:70px;
+
+    border-radius:50%;
+
+    background:white;
+
+    padding:5px;
+
+    box-shadow:0 4px 10px rgba(0,0,0,.3);
+}
+
+.banner{
+
+    position:relative;
+
+    width:100%;
+
+    height:260px;
+
+    overflow:hidden;
+
+    border-radius:0 0 20px 20px;
+}
+
+.slides{
+
+    width:100%;
+    height:100%;
+}
+
+.slide{
+
+    position:absolute;
+
+    width:100%;
+    height:100%;
+
+    opacity:0;
+
+    transition:opacity .6s ease;
+}
+
+.slide.ativo{
+
+    opacity:1;
+}
+
+.slide img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+}
+
+.slide::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    linear-gradient(
+        to top,
+        rgba(0,0,0,.85),
+        rgba(0,0,0,.2)
+    );
+}
+
+.texto-banner{
+
+    position:absolute;
+
+    bottom:25px;
+    left:20px;
+
+    color:white;
+
+    z-index:2;
+}
+
+.texto-banner h1{
+
+    font-size:2rem;
+
+    margin-bottom:8px;
+}
+
+.texto-banner p{
+
+    font-size:1rem;
+}
+
+.indicadores{
+
+    position:absolute;
+
+    bottom:10px;
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:8px;
+
+    z-index:3;
+}
+
+.dot{
+
+    width:10px;
+    height:10px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.4);
+}
+
+.dot.ativo{
+
+    background:#ff7b00;
+}
+
+.btn-banner{
+
+    display:inline-block;
+
+    margin-top:10px;
+
+    padding:10px 18px;
+
+    background:#ff7b00;
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:10px;
+
+    font-weight:bold;
+}
+
+button{
+
+    background:#ff7b00;
+
+    color:white;
+
+    border:none;
+
+    border-radius:12px;
+
+    padding:12px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+button:hover{
+
+    transform:scale(1.03);
+}
+
+/* BODY */
+
+body{
+
+    background:
+    linear-gradient(
+        180deg,
+        #111,
+        #181818
+    );
+
+    color:white;
+}
+
+/* HEADER */
+
+header{
+    background:#000;
+    text-align:center;
+    padding:20px;
+    box-shadow:0 2px 10px rgba(0,0,0,.5);
+    border-bottom:3px solid #ff7b00;
+}
+
+header h1{
+    color:#fff;
+    font-size:1.8rem;
+}
+
+.logo{
+    width:120px;
+    margin-bottom:10px;
+}
+
+/* MENU */
+
+.menu{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(160px, 1fr));
+    gap:12px;
+    padding:12px;
+
+}
+
+/* CARD */
+
+.card{
+
+    background:#1f1f1f;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    box-shadow:
+    0 10px 20px rgba(0,0,0,.25);
+
+    transition:.3s;
+}
+
+.card:hover{
+
+    transform:translateY(-4px);
+}
+
+
+.card img{
+
+    width:100%;
+
+    height:140px;
+
+    object-fit:cover;
+}
+
+.card h3{
+    color:#ff7b00;
+    padding:15px 15px 5px;
+    font-size:1rem;
+}
+
+.card p{
+    color:#ddd;
+    padding:0 15px 10px;
+    font-size:0.8rem;
+}
+
+/* SELECT */
+
+.card select{
+    width:90%;
+    margin:10px auto;
+    display:block;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    background:#2a2a2a;
+    color:white;
+    font-size:15px;
+}
+
+/* BOTÃO ADICIONAR */
+
+.card button{
+    width:90%;
+    margin:10px auto 15px;
+    display:block;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    background:#ff7b00;
+    color:white;
+    font-weight:600;
+    font-size:15px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.card button:hover{
+    background:#ff9500;
+}
+
+/* CARRINHO */
+
+.carrinho{
+    background:#1c1c1c;
+    margin:20px;
+    padding:20px;
+    border-radius:15px;
+    border:1px solid #333;
+    box-shadow:
+    -10px 0 25px rgba(0,0,0,.4);
+}
+
+.carrinho h2{
+    color:#ff7b00;
+    margin-bottom:15px;
+}
+
+#itens{
+    margin-bottom:15px;
+}
+
+#itens p{
+    padding:8px 0;
+    border-bottom:1px solid #333;
+}
+
+/* TOTAL */
+
+#total{
+    color:#ff7b00;
+    margin:15px 0;
+    font-size:1.2rem;
+}
+
+/* INPUTS */
+
+.carrinho input,
+.carrinho textarea{
+
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+
+    background:#2a2a2a;
+    color:white;
+
+    border:1px solid #444;
+    border-radius:10px;
+
+    outline:none;
+}
+
+.carrinho input:focus,
+.carrinho textarea:focus{
+
+    border-color:#ff7b00;
+}
+
+/* TEXTAREA */
+
+.carrinho{
+
+    position:fixed;
+
+    top:0;
+    right:-100%;
+
+    width:90%;
+    max-width:400px;
+
+    height:100vh;
+
+    background:#1c1c1c;
+
+    z-index:9998;
+
+    transition:.3s;
+
+    overflow-y:auto;
+
+    padding:20px;
+
+    border-left:2px solid #ff7b00;
+}
+
+/* BOTÃO FINALIZAR */
+
+.pedido{
+    width:100%;
+    margin-top:15px;
+    padding:15px;
+
+    background:#ff7b00;
+    color:white;
+
+    border:none;
+    border-radius:10px;
+
+    font-size:16px;
+    font-weight:bold;
+
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.pedido:hover{
+    background:#ff9500;
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-track{
+    background:#111;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#ff7b00;
+    border-radius:10px;
+}
+
+/* RESPONSIVO */
+
+@media(min-width:768px){
+
+    .menu{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(min-width:1200px){
+
+    .menu{
+        grid-template-columns:repeat(3,1fr);
+        max-width:1400px;
+        margin:auto;
+    }
+
+    .carrinho{
+        max-width:1000px;
+        margin:30px auto;
+    }
+}
+
+/* CSS MODAL DO SABORES PIZZA  */
+
+.modal{
+    display:none;
+
+    position:fixed;
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:rgba(0,0,0,.8);
+
+    justify-content:center;
+    align-items:center;
+
+    z-index:1000;
+}
+
+.modal-content{
+
+    width:90%;
+    max-width:400px;
+
+    background:#1c1c1c;
+
+    padding:20px;
+
+    border-radius:15px;
+
+    border:1px solid #ff7b00;
+}
+
+.modal-content h2{
+    color:#ff7b00;
+    margin-bottom:15px;
+}
+
+.modal-content select{
+    width:100%;
+    padding:12px;
+    margin-bottom:15px;
+}
+
+.modal-content button{
+    width:100%;
+    margin-top:10px;
+}
+
+.carrinho-float{
+
+    position:fixed;
+
+    bottom:20px;
+    right:20px;
+
+    width:65px;
+    height:65px;
+
+    background:#ff7b00;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:28px;
+
+    cursor:pointer;
+
+    z-index:9999;
+
+    box-shadow:0 4px 15px rgba(0,0,0,.4);
+}
+
+.carrinho-float span{
+
+    position:absolute;
+
+    top:-5px;
+    right:-5px;
+
+    width:25px;
+    height:25px;
+
+    background:red;
+
+    color:white;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:12px;
+}
+
+.carrinho.ativo{
+
+    right:0;
+}
+
+.fechar-carrinho{
+
+    float:right;
+
+    background:none;
+
+    border:none;
+
+    color:white;
+
+    font-size:20px;
+
+    cursor:pointer;
+}
+
+
+.topo-carrinho{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:20px;
+}
+
+.acoes-carrinho{
+
+    display:flex;
+    gap:10px;
+}
+
+.fechar-carrinho,
+.limpar-carrinho{
+
+    width:40px;
+    height:40px;
+
+    border:none;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    transition:.3s;
+}
+
+.fechar-carrinho{
+
+    background:#ff7b00;
+    color:white;
+}
+
+.fechar-carrinho:hover{
+
+    background:#ff9500;
+}
+
+.limpar-carrinho{
+
+    background:#d62828;
+    color:white;
+}
+
+.limpar-carrinho:hover{
+
+    background:#ef233c;
+}
+
+
+
+
+
+
+
+
+.escondido{
+    display:none !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#overlay{
+
+    display:none;
+
+    position:fixed;
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:rgba(0,0,0,.6);
+
+    z-index:9997;
+}
+
+
+.swal2-container{
+    z-index: 20000 !important;
+}
+
+.tipo-pedido{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-top:15px;
+    margin-bottom:15px;
+}
+
+.opcao-pedido{
+
+    flex:1;
+
+    background:#2a2a2a;
+
+    border:2px solid #444;
+
+    border-radius:12px;
+
+    padding:15px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:8px;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.opcao-pedido:hover{
+
+    border-color:#ff7b00;
+}
+
+.opcao-pedido span{
+
+    font-weight:600;
+}
+
+.opcao-pedido.ativa{
+
+    background:#ff7b00;
+
+    border-color:#ff7b00;
+
+    color:white;
+}
+
+
+.campo-bairro{
+
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+.campo-bairro label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    font-weight:600;
+
+    color:#fff;
+}
+
+#bairro{
+
+    appearance:none;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='%23ff7b00' viewBox='0 0 16 16'%3E%3Cpath d='M1.5 5.5L8 12l6.5-6.5'/%3E%3C/svg%3E");
+
+    background-repeat:no-repeat;
+
+    background-position:right 15px center;
+
+    padding-right:45px;
+
+    width:100%;
+
+    padding:14px;
+
+    border:2px solid #333;
+
+    border-radius:12px;
+
+    background:#1f1f1f;
+
+    color:white;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    outline:none;
+}
+
+#bairro:hover{
+
+    border-color:#ff7b00;
+}
+
+#bairro:focus{
+
+    border-color:#ff7b00;
+
+    box-shadow:0 0 10px rgba(255,123,0,.4);
+}
+
+#total{
+
+    background:#ff7b00;
+
+    color:white;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    text-align:center;
+
+    font-size:1.2rem;
+
+    font-weight:bold;
+}
+
+
+#borda{
+
+    appearance:none;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='%23ff7b00' viewBox='0 0 16 16'%3E%3Cpath d='M1.5 5.5L8 12l6.5-6.5'/%3E%3C/svg%3E");
+
+    background-repeat:no-repeat;
+
+    background-position:right 15px center;
+
+    padding-right:45px;
+
+    width:100%;
+
+    padding:14px;
+
+    border:2px solid #333;
+
+    border-radius:12px;
+
+    background:#1f1f1f;
+
+    color:white;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    outline:none;
+}
+
+#borda:hover{
+
+    border-color:#ff7b00;
+}
+
+#borda:focus{
+
+    border-color:#ff7b00;
+
+    box-shadow:0 0 10px rgba(255,123,0,.4);
+}
+
+.titulo-categoria{
+
+    color:#ff7b00;
+
+    margin-top:20px;
+
+    margin-bottom:10px;
+
+    border-bottom:2px solid #ff7b00;
+
+    padding-bottom:5px;
+}
+
+.item-sabor{
+
+    display:block;
+
+    padding:10px;
+
+    margin-bottom:6px;
+
+    background:#2a2a2a;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.item-sabor:hover{
+
+    background:#333;
+}
+
+.item-sabor input{
+
+    margin-right:8px;
+}
+
+#buscarSabor{
+
+    width:100%;
+
+    padding:12px;
+
+    margin-bottom:15px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#2a2a2a;
+
+    color:white;
+
+    font-size:15px;
+
+    outline:none;
+
+    box-sizing:border-box;
+}
+
+#buscarSabor:focus{
+
+    border:2px solid #ff7b00;
+
+    box-shadow:0 0 8px rgba(255,123,0,.3);
+}
+
+#listaSabores{
+
+    max-height:350px;
+
+    overflow-y:auto;
+
+    padding-right:5px;
+}
+
+#formaPagamento{
+
+    width:100%;
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#2a2a2a;
+
+    color:white;
+
+    margin-top:10px;
+
+    margin-bottom:10px;
+}
+
+#campoTroco{
+
+    margin-top:10px;
+}
+
+#troco{
+
+    width:100%;
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#2a2a2a;
+
+    color:white;
+
+    box-sizing:border-box;
+}
+
+.cards-bebidas{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(
+        auto-fit,
+        minmax(160px,1fr)
+    );
+
+    gap:15px;
+
+    margin-top:15px;
+}
+
+.card-bebida{
+
+    background:#1f1f1f;
+
+    border-radius:15px;
+
+    padding:15px;
+
+    text-align:center;
+
+    box-shadow:
+    0 4px 12px rgba(0,0,0,.2);
+}
+
+.card-bebida img{
+
+    width:100%;
+
+    height:120px;
+
+    object-fit:contain;
+}
+
+.card-bebida h3{
+
+    margin:10px 0;
+}
+
+.card-bebida p{
+
+    color:#ff7b00;
+
+    font-weight:bold;
+
+    font-size:18px;
+}
+
