@@ -107,6 +107,8 @@ const combos = [
 ];
 
 
+
+
 /*  FUNÇÃO PARA COBRAR DO SABOR MAIS CARO */
 
 function categoriaMaisCara(categorias){
@@ -614,6 +616,9 @@ function abrirCarrinho(){
     document
     .querySelector(".carrinho-float")
     .style.display = "none";
+
+    document.body.classList.add("body-travado");
+
 }
 
 function fecharCarrinho(){
@@ -629,6 +634,8 @@ function fecharCarrinho(){
     document
     .querySelector(".carrinho-float")
     .style.display = "flex";
+
+    document.body.classList.remove("body-travado");
 }
 
 

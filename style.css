@@ -371,6 +371,9 @@ header h1{
 
 .carrinho{
 
+    height:100dvh;
+    padding-bottom:100px;
+
     position:fixed;
 
     top:0;
@@ -394,6 +397,16 @@ header h1{
     border-left:2px solid #ff7b00;
 
     box-sizing:border-box;
+}
+
+
+.body-travado{
+
+    overflow:hidden;
+
+    height:100vh;
+
+    touch-action:none;
 }
 
 /* BOTÃO FINALIZAR */
