@@ -88,6 +88,55 @@
 </div>
 
 
+
+
+<div class="categorias">
+
+    <button
+        class="categoria-btn ativa"
+        onclick="mostrarCategoria('todos', this)">
+
+        📋 Todos
+
+    </button>
+
+    <button
+        class="categoria-btn"
+        onclick="mostrarCategoria('menu', this)">
+
+        🍕 Pizzas
+
+    </button>
+
+    <button
+        class="categoria-btn"
+        onclick="mostrarCategoria('bebidas', this)">
+
+        🥤 Bebidas
+
+    </button>
+
+
+    <button
+        class="categoria-btn"
+        onclick="mostrarCategoria('combos', this)">
+
+        🔥 Combos
+
+    </button>
+
+    <button
+        class="categoria-btn"
+        onclick="mostrarCategoria('promocoes', this)">
+
+        💥 Promoções
+
+    </button>
+
+</div>
+
+
+
 <!--SESSÃO DOS CARDS PIZZA-->
 
 
@@ -134,13 +183,37 @@
 <!-- SESSÃO DOS CARDS REFRIGERANTES-->
 
 
-<section class="bebidas" id="bebidas"">
+<section id="bebidas" style="display:none;">
 
     <h2>🥤 Bebidas</h2>
 
     <div class="cards-bebidas" id="cardsBebidas"></div>
 
 </section>
+
+
+<!-- CARDS COMBOS-->
+
+<section id="combos" style="display:none;">
+
+    <h2>🔥 Combos</h2>
+
+    <div id="cardsCombos" class="cards-combos"></div>
+
+</section>
+
+
+<!-- CARDS PROMOÇOES-->
+
+
+<section id="promocoes" style="display:none;">
+
+    <h2>💥 Promoções</h2>
+
+    <div class="cards-promocoes" id="cardspromocoes"></div>
+
+</section>
+
 
 
 

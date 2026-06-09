@@ -89,6 +89,23 @@ const bebidas = [
 ];
 
 
+const combos = [
+
+    {
+        nome: "Combo Casal",
+        descricao: "1 Pizza Grande + Borda Recheada + Refrigerante 1L ",
+        preco: 50.00,
+        imagem: "img/COMBO1.png"
+    },
+
+    {
+        nome: "Combo Família",
+        descricao: "1 Pizzas Grandes + 1 Pizza M + Refrigerante 2L",
+        preco: 70.00,
+        imagem: "img/COMBO1.png"
+    }
+];
+
 
 /*  FUNÇÃO PARA COBRAR DO SABOR MAIS CARO */
 
@@ -265,56 +282,43 @@ function atualizarCarrinho(){
     if(item.tipo === "bebida"){
 
         html += `
-            <div class="item-carrinho">
-                <strong>🥤 ${item.nome}</strong>
-                <br>
-                R$ ${item.preco.toFixed(2)}
-            </div>
+        <div class="item-carrinho">
+            <strong>🥤 ${item.nome}</strong>
+            <br>
+            R$ ${item.preco.toFixed(2)}
+        </div>
+        `;
+
+    }else if(item.tipo === "combo"){
+
+        html += `
+        <div class="item-carrinho">
+            <strong>🔥 ${item.nome}</strong>
+            <br>
+            R$ ${item.preco.toFixed(2)}
+        </div>
         `;
 
     }else{
 
         html += `
-            <div class="item-carrinho">
-
-                <strong>🍕 ${item.tamanho}</strong>
-
-                <br>
-
-                Sabores:
-                ${item.sabores.join(" / ")}
-
-                <br>
-
-                Categoria:
-                ${item.categoria}
-
-                <br>
-
-                Borda:
-                ${item.borda || "Sem borda"}
-
-                <br>
-
-                R$ ${item.preco.toFixed(2)}
-
-            </div>
+        <div class="item-carrinho">
+            <strong>🍕 ${item.tamanho}</strong>
+            <br>
+            Sabores: ${item.sabores.join(" / ")}
+            <br>
+            Categoria: ${item.categoria}
+            <br>
+            Borda: ${item.borda || "Sem borda"}
+            <br>
+            R$ ${item.preco.toFixed(2)}
+        </div>
         `;
-
     }
 
     });
 
     lista.innerHTML = html;
-
-
-
-
-
-
-
-
-
 
 
 
@@ -349,7 +353,7 @@ function atualizarCarrinho(){
     carrinho.length > 0
     ? "flex"
     : "none";
-}
+    }
 
 
 /* FUNÇÃO PARA ENVIAR OS PEDIDOS PARA O WPP */
@@ -455,7 +459,25 @@ function enviarPedido(){
 
     carrinho.forEach(item => {
 
-        total += item.preco;
+    total += item.preco;
+
+    if(item.tipo === "bebida"){
+
+        mensagem +=
+        `🥤 ${item.nome}%0A`;
+
+        mensagem +=
+        `Valor: R$ ${item.preco.toFixed(2)}%0A%0A`;
+
+    }else if(item.tipo === "combo"){
+
+        mensagem +=
+        `🔥 ${item.nome}%0A`;
+
+        mensagem +=
+        `Valor: R$ ${item.preco.toFixed(2)}%0A%0A`;
+
+    }else{
 
         mensagem +=
         `🍕 ${item.tamanho}%0A`;
@@ -472,7 +494,9 @@ function enviarPedido(){
         mensagem +=
         `Valor: R$ ${item.preco.toFixed(2)}%0A%0A`;
 
-    });
+    }
+
+});
 
     mensagem +=
     "━━━━━━━━━━━━━━━%0A";
@@ -510,16 +534,6 @@ function enviarPedido(){
         `💵 Troco para: R$ ${troco || "Não informado"}%0A`;
     }
 
-
-    if(item.tipo === "bebida"){
-
-        mensagem +=
-        `🥤 ${item.nome}%0A`;
-
-        mensagem +=
-        `Valor: R$ ${item.preco.toFixed(2)}%0A%0A`;
-
-    }
 
 
 
@@ -622,26 +636,41 @@ function fecharCarrinho(){
 function limparCarrinho(){
 
     Swal.fire({
-        title: "Limpar carrinho?",
-        text: "Todos os itens serão removidos.",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: "Sim, limpar",
-        cancelButtonText: "Cancelar",
-        confirmButtonColor: "#ff7b00"
+
+        title:"Limpar carrinho?",
+
+        text:"Todos os itens serão removidos.",
+
+        icon:"warning",
+
+        showCancelButton:true,
+
+        confirmButtonText:"Sim",
+
+        cancelButtonText:"Cancelar"
+
     }).then((result) => {
 
         if(result.isConfirmed){
 
             carrinho = [];
 
+            taxaEntregaAtual = 0;
+
+            document.getElementById("bairro").value = "";
+
             atualizarCarrinho();
 
             Swal.fire({
-                icon: "success",
-                title: "Carrinho limpo!",
-                timer: 1500,
-                showConfirmButton: false
+
+                icon:"success",
+
+                title:"Carrinho limpo!",
+
+                timer:1200,
+
+                showConfirmButton:false
+
             });
 
         }
@@ -881,6 +910,8 @@ function trocarSlide(){
 
 setInterval(trocarSlide, 4000);
 
+
+
 /*  FUNÇÕES DE PAGAMENTO */
 
 function mostrarTroco(){
@@ -980,3 +1011,127 @@ function carregarBebidas(){
 }
 
 carregarBebidas();
+
+function mostrarCategoria(categoria, botao){
+
+    const categorias = [
+        "menu",
+        "bebidas",
+        "combos",
+        "promocoes"
+    ];
+
+    categorias.forEach(id => {
+
+        document
+        .getElementById(id)
+        .style.display = "none";
+
+    });
+
+    if(categoria === "todos"){
+
+        categorias.forEach(id => {
+
+            document
+            .getElementById(id)
+            .style.display = "";
+
+        });
+
+    }else{
+
+        document
+        .getElementById(categoria)
+        .style.display = "";
+
+    }
+
+    document
+    .querySelectorAll(".categoria-btn")
+    .forEach(btn => {
+
+        btn.classList.remove("ativa");
+
+    });
+
+    botao.classList.add("ativa");
+
+}
+
+/* FUNC PARA ADD OS COMBOS*/
+
+function carregarCombos(){
+
+    const container =
+    document.getElementById("cardsCombos");
+
+    container.innerHTML = "";
+
+    combos.forEach(combo => {
+
+        container.innerHTML += `
+
+            <div class="card-combo">
+
+                <img src="${combo.imagem}">
+
+                <h3>${combo.nome}</h3>
+
+                <p>${combo.descricao}</p>
+
+                <span>
+                    R$ ${combo.preco.toFixed(2)}
+                </span>
+
+                <button
+                    onclick="adicionarCombo(
+                        '${combo.nome}',
+                        ${combo.preco}
+                    )">
+
+                    Adicionar
+
+                </button>
+
+            </div>
+
+        `;
+
+    });
+
+}
+
+
+carregarCombos();
+
+
+/* ADD OS COMBOS NO CARRINHO*/
+
+function adicionarCombo(nome, preco){
+
+    carrinho.push({
+
+        tipo: "combo",
+
+        nome: nome,
+
+        preco: preco
+
+    });
+
+    atualizarCarrinho();
+
+    Swal.fire({
+
+        icon: "success",
+
+        title: "Combo adicionado!",
+
+        timer: 1200,
+
+        showConfirmButton: false
+
+    });
+
+}

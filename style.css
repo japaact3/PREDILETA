@@ -199,6 +199,8 @@ button:hover{
 
 body{
 
+    overflow-x: hidden;
+
     background:
     linear-gradient(
         180deg,
@@ -319,16 +321,6 @@ header h1{
 
 /* CARRINHO */
 
-.carrinho{
-    background:#1c1c1c;
-    margin:20px;
-    padding:20px;
-    border-radius:15px;
-    border:1px solid #333;
-    box-shadow:
-    -10px 0 25px rgba(0,0,0,.4);
-}
-
 .carrinho h2{
     color:#ff7b00;
     margin-bottom:15px;
@@ -391,7 +383,7 @@ header h1{
 
     background:#1c1c1c;
 
-    z-index:9998;
+    z-index:99998;
 
     transition:.3s;
 
@@ -400,6 +392,8 @@ header h1{
     padding:20px;
 
     border-left:2px solid #ff7b00;
+
+    box-sizing:border-box;
 }
 
 /* BOTÃO FINALIZAR */
@@ -536,7 +530,7 @@ header h1{
 
     cursor:pointer;
 
-    z-index:9999;
+    z-index:100000;
 
     box-shadow:0 4px 15px rgba(0,0,0,.4);
 }
@@ -683,7 +677,7 @@ header h1{
 
 
 .swal2-container{
-    z-index: 20000 !important;
+    z-index: 999999 !important;
 }
 
 .tipo-pedido{
@@ -1043,3 +1037,94 @@ header h1{
 
     font-size:18px;
 }
+
+
+.categorias{
+
+    display:flex;
+
+    gap:10px;
+
+    margin:20px 10px;
+
+    overflow-x:auto;
+
+    padding-bottom:5px;
+
+    scrollbar-width:none;
+}
+
+.categorias::-webkit-scrollbar{
+    display:none;
+}
+
+.categoria-btn{
+
+    flex:none;
+
+    min-width:120px;
+}
+
+
+
+.categoria-btn.ativa{
+
+    background:#ff7b00;
+}
+
+/* CARDS COMBO*/
+
+.cards-combos{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(
+        auto-fit,
+        minmax(160px,1fr)
+    );
+
+    gap:15px;
+
+    margin-top:15px;
+}
+
+.card-combo{
+
+    background:#1e1e1e;
+
+    border:2px solid #ff7b00;
+
+    border-radius:15px;
+
+    padding:10px;
+
+    text-align:center;
+
+    color:white;
+
+    overflow:hidden;
+
+    transition:.3s;
+}
+
+.card-combo:hover{
+
+    transform:translateY(-3px);
+}
+
+
+
+.card-combo img{
+
+    width:100%;
+
+    height:140px;
+
+    object-fit:cover;
+
+    border-radius:10px;
+
+    display:block;
+}
+
